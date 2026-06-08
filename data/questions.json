@@ -1,0 +1,32 @@
+[
+  {
+    "id": "q-phishing",
+    "title": "Phishing",
+    "topic": "Nätfiske och misstänkta länkar",
+    "correctBehavior": "Kontrollera avsändaren och gå själv till den riktiga tjänsten."
+  },
+  {
+    "id": "q-password",
+    "title": "Lösenord",
+    "topic": "Starka och unika lösenord",
+    "correctBehavior": "Välj en lång och unik lösenfras med variation."
+  },
+  {
+    "id": "q-mfa",
+    "title": "MFA",
+    "topic": "Oväntade MFA-notiser",
+    "correctBehavior": "Neka en MFA-notis som du inte själv har startat och rapportera händelsen."
+  },
+  {
+    "id": "q-usb",
+    "title": "USB-säkerhet",
+    "topic": "Okända USB-enheter",
+    "correctBehavior": "Lämna okända USB-enheter till ansvarig person utan att koppla in dem."
+  },
+  {
+    "id": "q-incident",
+    "title": "Incidenthantering",
+    "topic": "Misstänkt kapat konto",
+    "correctBehavior": "Rapportera snabbt till ansvarig person och följ rutinen."
+  }
+]

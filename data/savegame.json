@@ -1,0 +1,10 @@
+{
+  "playerName": "lucas",
+  "currentRoom": 2,
+  "score": 20,
+  "completedRooms": [
+    "phishing-room",
+    "password-vault"
+  ],
+  "lastSaved": "2026-06-08T12:13:08"
+}
