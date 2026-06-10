@@ -1,32 +1,52 @@
 [
   {
-    "id": "q-phishing",
-    "title": "Phishing",
-    "topic": "Nätfiske och misstänkta länkar",
-    "correctBehavior": "Kontrollera avsändaren och gå själv till den riktiga tjänsten."
+    "id": "ransomware-1",
+    "question": "Vad är ransomware?",
+    "options": [
+      "Ett program som förbättrar datorns prestanda",
+      "Skadlig kod som krypterar filer och kräver lösensumma",
+      "Ett vanligt antivirusprogram"
+    ],
+    "correctAnswer": "B"
   },
   {
-    "id": "q-password",
-    "title": "Lösenord",
-    "topic": "Starka och unika lösenord",
-    "correctBehavior": "Välj en lång och unik lösenfras med variation."
+    "id": "ransomware-2",
+    "question": "Vad är det bästa första steget om du misstänker ransomware?",
+    "options": [
+      "Koppla bort datorn från nätverket och kontakta IT",
+      "Betala lösensumman direkt",
+      "Starta om datorn flera gånger"
+    ],
+    "correctAnswer": "A"
   },
   {
-    "id": "q-mfa",
-    "title": "MFA",
-    "topic": "Oväntade MFA-notiser",
-    "correctBehavior": "Neka en MFA-notis som du inte själv har startat och rapportera händelsen."
+    "id": "ransomware-3",
+    "question": "Vilket skydd minskar risken att förlora data vid ransomware?",
+    "options": [
+      "Regelbundna säkerhetskopior",
+      "Att använda samma lösenord överallt",
+      "Att ignorera säkerhetsuppdateringar"
+    ],
+    "correctAnswer": "A"
   },
   {
-    "id": "q-usb",
-    "title": "USB-säkerhet",
-    "topic": "Okända USB-enheter",
-    "correctBehavior": "Lämna okända USB-enheter till ansvarig person utan att koppla in dem."
+    "id": "ransomware-4",
+    "question": "Hur sprids ransomware ofta?",
+    "options": [
+      "Genom phishingmejl och skadliga bilagor",
+      "Genom att skärmen är för ljus",
+      "Genom att datorn är avstängd"
+    ],
+    "correctAnswer": "A"
   },
   {
-    "id": "q-incident",
-    "title": "Incidenthantering",
-    "topic": "Misstänkt kapat konto",
-    "correctBehavior": "Rapportera snabbt till ansvarig person och följ rutinen."
+    "id": "ransomware-5",
+    "question": "Varför bör man vara försiktig med okända bilagor?",
+    "options": [
+      "De kan innehålla skadlig kod",
+      "De gör alltid datorn snabbare",
+      "De uppdaterar automatiskt antivirus"
+    ],
+    "correctAnswer": "A"
   }
 ]

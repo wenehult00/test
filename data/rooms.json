@@ -1,37 +1,9 @@
 [
   {
-    "id": "phishing-room",
-    "name": "Phishing Room",
-    "description": "En vägg av skärmar visar en inkorg. En blinkande varning låser dörren bakom dig.",
-    "clue": "Rummet reagerar på stress, hot och misstänkta länkar.",
-    "challengeFunction": "Invoke-PhishingChallenge"
-  },
-  {
-    "id": "password-vault",
-    "name": "Password Vault",
-    "description": "Ett digitalt valv står i mitten av rummet. På dörren syns en lösenordsterminal.",
-    "clue": "Valvet släpper bara igenom långa och unika lösenord.",
-    "challengeFunction": "Invoke-PasswordChallenge"
-  },
-  {
-    "id": "mfa-door",
-    "name": "MFA Door",
-    "description": "Dörren framför dig har två lås. Det andra låset väntar på en MFA-bekräftelse.",
-    "clue": "En MFA-notis ska bara godkännas om du själv försöker logga in.",
-    "challengeFunction": "Invoke-MfaChallenge"
-  },
-  {
-    "id": "usb-lab",
-    "name": "USB Lab",
-    "description": "På labbordet ligger ett okänt USB-minne bredvid en dator med röd varningslampa.",
-    "clue": "Allt som går att koppla in kan också vara en risk.",
-    "challengeFunction": "Invoke-UsbChallenge"
-  },
-  {
-    "id": "incident-center",
-    "name": "Incident Center",
-    "description": "Det sista rummet är ett kontrollcenter. Larm visar att ett konto kan vara kapat.",
-    "clue": "En incident blir lättare att stoppa när den rapporteras snabbt.",
-    "challengeFunction": "Invoke-IncidentChallenge"
+    "id": "ransomware-terminal",
+    "name": "Ransomware Escape Room",
+    "description": "Terminalen visar ett hacker-meddelande. Filerna är krypterade och systemet låses upp genom fem frågor om ransomware.",
+    "goal": "Svara rätt på alla frågor så snabbt som möjligt.",
+    "penalty": "Varje fel svar ger 10 sekunders tidstillägg."
   }
 ]

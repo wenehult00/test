@@ -1,27 +1,72 @@
 # SecurityChallenges.psm1
-# Här finns spelets säkerhetsutmaningar.
-# Varje funktion returnerar ett objekt med Success, Points och Feedback.
+# Här finns ransomware-frågorna och quizlogiken.
 
-function New-ChallengeResult {
-    param(
-        [Parameter(Mandatory)]
-        [bool]$Success,
-
-        [Parameter(Mandatory)]
-        [int]$Points,
-
-        [Parameter(Mandatory)]
-        [string]$Feedback
+function Get-RansomwareQuestions {
+    return @(
+        [PSCustomObject]@{
+            Number      = 1
+            Question    = "Vad är ransomware?"
+            Options     = @(
+                "A. Ett program som förbättrar datorns prestanda",
+                "B. Skadlig kod som krypterar filer och kräver lösensumma",
+                "C. Ett vanligt antivirusprogram"
+            )
+            Correct     = "B"
+            CorrectText = "Rätt. Ransomware låser eller krypterar filer och försöker pressa offret på pengar."
+            WrongText   = "Fel. Ransomware är skadlig kod som krypterar filer och kräver lösensumma."
+        }
+        [PSCustomObject]@{
+            Number      = 2
+            Question    = "Vad är det bästa första steget om du misstänker ransomware?"
+            Options     = @(
+                "A. Koppla bort datorn från nätverket och kontakta IT",
+                "B. Betala lösensumman direkt",
+                "C. Starta om datorn flera gånger"
+            )
+            Correct     = "A"
+            CorrectText = "Rätt. Att koppla bort datorn kan bromsa spridning, och IT kan hjälpa till på rätt sätt."
+            WrongText   = "Fel. Första steget är att isolera datorn från nätverket och kontakta IT eller ansvarig vuxen."
+        }
+        [PSCustomObject]@{
+            Number      = 3
+            Question    = "Vilket skydd minskar risken att förlora data vid ransomware?"
+            Options     = @(
+                "A. Regelbundna säkerhetskopior",
+                "B. Att använda samma lösenord överallt",
+                "C. Att ignorera säkerhetsuppdateringar"
+            )
+            Correct     = "A"
+            CorrectText = "Rätt. Säkerhetskopior gör det möjligt att återställa filer utan att betala angriparen."
+            WrongText   = "Fel. Regelbundna säkerhetskopior är ett av de viktigaste skydden mot dataförlust."
+        }
+        [PSCustomObject]@{
+            Number      = 4
+            Question    = "Hur sprids ransomware ofta?"
+            Options     = @(
+                "A. Genom phishingmejl och skadliga bilagor",
+                "B. Genom att skärmen är för ljus",
+                "C. Genom att datorn är avstängd"
+            )
+            Correct     = "A"
+            CorrectText = "Rätt. Phishingmejl, falska länkar och skadliga bilagor är vanliga vägar in."
+            WrongText   = "Fel. Ransomware sprids ofta via phishingmejl, skadliga bilagor och osäkra länkar."
+        }
+        [PSCustomObject]@{
+            Number      = 5
+            Question    = "Varför bör man vara försiktig med okända bilagor?"
+            Options     = @(
+                "A. De kan innehålla skadlig kod",
+                "B. De gör alltid datorn snabbare",
+                "C. De uppdaterar automatiskt antivirus"
+            )
+            Correct     = "A"
+            CorrectText = "Rätt. Okända bilagor kan innehålla skadlig kod och ska kontrolleras innan de öppnas."
+            WrongText   = "Fel. Okända bilagor kan innehålla skadlig kod, även om mejlet ser trovärdigt ut."
+        }
     )
-
-    return [PSCustomObject]@{
-        Success  = $Success
-        Points   = $Points
-        Feedback = $Feedback
-    }
 }
 
-function Read-ChallengeChoice {
+function Read-RansomwareChoice {
     param(
         [Parameter(Mandatory)]
         [string]$Prompt
@@ -30,12 +75,21 @@ function Read-ChallengeChoice {
     try {
         $choice = Read-Host $Prompt
 
-        if ($choice -notin @("1", "2", "3")) {
-            Write-Host "Terminalen blinkar rött: välj 1, 2 eller 3." -ForegroundColor Yellow
+        if ([string]::IsNullOrWhiteSpace($choice)) {
             return $null
         }
 
-        return [int]$choice
+        $choice = $choice.Trim().ToUpper()
+
+        switch ($choice) {
+            "1" { return "A" }
+            "2" { return "B" }
+            "3" { return "C" }
+            "A" { return "A" }
+            "B" { return "B" }
+            "C" { return "C" }
+            default { return $null }
+        }
     }
     catch {
         Write-Host "Terminalen kunde inte läsa ditt svar. Försök igen." -ForegroundColor Red
@@ -43,139 +97,76 @@ function Read-ChallengeChoice {
     }
 }
 
-function Invoke-PhishingChallenge {
-    Write-Host ""
-    Write-Host "Terminalutmaning: Inkorgen" -ForegroundColor Cyan
-    Write-Host "Ett nytt mejl fyller skärmen: 'DITT KONTO STÄNGS OM 10 MINUTER'."
-    Write-Host "Avsändaren liknar skolans adress, men några bokstäver är fel. En stor knapp blinkar."
-    Write-Host ""
-    Write-Host "1. Klicka på knappen direkt för att rädda kontot."
-    Write-Host "2. Kontrollera avsändaren och gå själv till skolans riktiga inloggningssida."
-    Write-Host "3. Svara på mejlet med ditt användarnamn och lösenord."
+function Invoke-RansomwareQuiz {
+    param(
+        [Parameter(Mandatory)]
+        [object]$GameState
+    )
 
-    $choice = Read-ChallengeChoice -Prompt "Välj säker åtgärd"
+    $questions = Get-RansomwareQuestions
 
-    if ($null -eq $choice) {
-        return New-ChallengeResult -Success $false -Points 0 -Feedback "Terminalen accepterar bara alternativen 1, 2 eller 3."
+    foreach ($question in $questions) {
+        Invoke-RansomwareQuestion -Question $question -GameState $GameState -TotalQuestions $questions.Count
+        $GameState.completedQuestions++
     }
 
-    if ($choice -eq 2) {
-        $feedback = "Rätt. Du litade inte på länken, utan valde en kontrollerad väg till tjänsten."
-        Write-Host $feedback -ForegroundColor Green
-        return New-ChallengeResult -Success $true -Points 10 -Feedback $feedback
+    return [PSCustomObject]@{
+        Success            = $true
+        CompletedQuestions = $GameState.completedQuestions
+        WrongAnswers       = $GameState.wrongAnswers
+        PenaltySeconds     = $GameState.penaltySeconds
     }
-
-    $feedback = "Farligt val. Phishing använder ofta stress och falska länkar för att stjäla inloggningar."
-    Write-Host $feedback -ForegroundColor Yellow
-    return New-ChallengeResult -Success $false -Points 0 -Feedback $feedback
 }
 
-function Invoke-PasswordChallenge {
-    Write-Host ""
-    Write-Host "Terminalutmaning: Valvlåset" -ForegroundColor Cyan
-    Write-Host "Valvet visar tre möjliga lösenord. Ett svagt val startar larmet."
-    Write-Host "Du behöver välja det lösenord som bäst står emot gissning och knäckning."
-    Write-Host ""
-    Write-Host "1. Password123"
-    Write-Host "2. sommar2026"
-    Write-Host "3. Vinter!Kamera-73-Skog"
+function Invoke-RansomwareQuestion {
+    param(
+        [Parameter(Mandatory)]
+        [object]$Question,
 
-    $choice = Read-ChallengeChoice -Prompt "Välj lösenord"
+        [Parameter(Mandatory)]
+        [object]$GameState,
 
-    if ($null -eq $choice) {
-        return New-ChallengeResult -Success $false -Points 0 -Feedback "Valvet kräver ett val mellan 1 och 3."
+        [Parameter(Mandatory)]
+        [int]$TotalQuestions
+    )
+
+    $answeredCorrectly = $false
+
+    while (-not $answeredCorrectly) {
+        try {
+            $currentTime = Get-CurrentRansomwareTime -GameState $GameState
+            Show-QuestionHeader -QuestionNumber $Question.Number -TotalQuestions $TotalQuestions -PenaltySeconds $currentTime.PenaltySeconds
+            Show-CurrentTimer -TotalSeconds $currentTime.TotalSeconds -WrongAnswers $currentTime.WrongAnswers -PenaltySeconds $currentTime.PenaltySeconds
+        }
+        catch {
+            Show-QuestionHeader -QuestionNumber $Question.Number -TotalQuestions $TotalQuestions -PenaltySeconds $GameState.penaltySeconds
+            Show-Error "Kunde inte visa aktuell tid: $($_.Exception.Message)"
+        }
+
+        Write-Host $Question.Question -ForegroundColor White
+        Write-Host ""
+
+        foreach ($option in $Question.Options) {
+            Write-Host $option -ForegroundColor Gray
+        }
+
+        Write-Host ""
+        $choice = Read-RansomwareChoice -Prompt "Ditt svar (A, B eller C)"
+
+        if ($null -eq $choice) {
+            Show-FailureMessage "Ogiltig input. Skriv A, B eller C."
+            continue
+        }
+
+        if ($choice -eq $Question.Correct) {
+            Show-CorrectAnswerMessage -Message $Question.CorrectText
+            $answeredCorrectly = $true
+        }
+        else {
+            Add-TimePenalty -GameState $GameState -Seconds 10
+            Show-WrongAnswerMessage -Message $Question.WrongText -PenaltySeconds 10
+        }
     }
-
-    if ($choice -eq 3) {
-        $feedback = "Rätt. Längd, variation och unikhet gör lösenfrasen mycket starkare."
-        Write-Host $feedback -ForegroundColor Green
-        return New-ChallengeResult -Success $true -Points 10 -Feedback $feedback
-    }
-
-    $feedback = "För svagt. Vanliga ord, namn, årtal och enkla mönster är lätta att gissa."
-    Write-Host $feedback -ForegroundColor Yellow
-    return New-ChallengeResult -Success $false -Points 0 -Feedback $feedback
 }
 
-function Invoke-MfaChallenge {
-    Write-Host ""
-    Write-Host "Terminalutmaning: Andra låset" -ForegroundColor Cyan
-    Write-Host "Dörren skickar en MFA-notis. Problemet är att du inte försöker logga in."
-    Write-Host "Om du godkänner fel notis kan någon annan komma in."
-    Write-Host ""
-    Write-Host "1. Godkänn notisen för att bli av med den."
-    Write-Host "2. Neka notisen och rapportera eller byt lösenord enligt rutinen."
-    Write-Host "3. Stäng av MFA eftersom det stör."
-
-    $choice = Read-ChallengeChoice -Prompt "Välj säker åtgärd"
-
-    if ($null -eq $choice) {
-        return New-ChallengeResult -Success $false -Points 0 -Feedback "MFA-låset kräver ett giltigt val."
-    }
-
-    if ($choice -eq 2) {
-        $feedback = "Rätt. En oväntad MFA-notis kan betyda att någon redan har lösenordet."
-        Write-Host $feedback -ForegroundColor Green
-        return New-ChallengeResult -Success $true -Points 10 -Feedback $feedback
-    }
-
-    $feedback = "Fel val. Godkänn aldrig en MFA-notis som du inte själv har startat."
-    Write-Host $feedback -ForegroundColor Yellow
-    return New-ChallengeResult -Success $false -Points 0 -Feedback $feedback
-}
-
-function Invoke-UsbChallenge {
-    Write-Host ""
-    Write-Host "Terminalutmaning: Okänd enhet" -ForegroundColor Cyan
-    Write-Host "USB-minnet ligger precis bredvid labbdatorn. Skärmen visar: 'Anslut enhet för analys'."
-    Write-Host "Det kan vara oskyldigt, men det kan också vara en fälla."
-    Write-Host ""
-    Write-Host "1. Stoppa in det i datorn för att hitta ägaren."
-    Write-Host "2. Lämna det till lärare eller IT-ansvarig utan att koppla in det."
-    Write-Host "3. Kopiera filerna snabbt och radera sedan USB-minnet."
-
-    $choice = Read-ChallengeChoice -Prompt "Välj säker åtgärd"
-
-    if ($null -eq $choice) {
-        return New-ChallengeResult -Success $false -Points 0 -Feedback "USB-labbet accepterar bara val 1, 2 eller 3."
-    }
-
-    if ($choice -eq 2) {
-        $feedback = "Rätt. Okända USB-enheter ska inte kopplas in i en vanlig dator."
-        Write-Host $feedback -ForegroundColor Green
-        return New-ChallengeResult -Success $true -Points 10 -Feedback $feedback
-    }
-
-    $feedback = "Osäkert. En okänd USB-enhet kan köra skadlig kod eller lura användaren."
-    Write-Host $feedback -ForegroundColor Yellow
-    return New-ChallengeResult -Success $false -Points 0 -Feedback $feedback
-}
-
-function Invoke-IncidentChallenge {
-    Write-Host ""
-    Write-Host "Terminalutmaning: Larmcentralen" -ForegroundColor Cyan
-    Write-Host "Skärmarna visar: 'Möjlig kapning av konto'. Filer saknas och konstiga meddelanden skickas."
-    Write-Host "Du behöver välja första åtgärden innan skadan sprider sig."
-    Write-Host ""
-    Write-Host "1. Rapportera snabbt till lärare eller IT och följ skolans rutin."
-    Write-Host "2. Vänta några dagar för att se om problemet försvinner."
-    Write-Host "3. Lägg ut användarnamnet och problemet offentligt i en chatt."
-
-    $choice = Read-ChallengeChoice -Prompt "Välj första åtgärd"
-
-    if ($null -eq $choice) {
-        return New-ChallengeResult -Success $false -Points 0 -Feedback "Incidentcentralen behöver ett giltigt val."
-    }
-
-    if ($choice -eq 1) {
-        $feedback = "Rätt. Snabb rapportering hjälper ansvariga att begränsa skadan och säkra bevis."
-        Write-Host $feedback -ForegroundColor Green
-        return New-ChallengeResult -Success $true -Points 10 -Feedback $feedback
-    }
-
-    $feedback = "Inte bra. Incidenter ska rapporteras snabbt och inte delas offentligt med känslig information."
-    Write-Host $feedback -ForegroundColor Yellow
-    return New-ChallengeResult -Success $false -Points 0 -Feedback $feedback
-}
-
-Export-ModuleMember -Function Invoke-PhishingChallenge, Invoke-PasswordChallenge, Invoke-MfaChallenge, Invoke-UsbChallenge, Invoke-IncidentChallenge
+Export-ModuleMember -Function Invoke-RansomwareQuiz, Invoke-RansomwareQuestion

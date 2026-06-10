@@ -14,13 +14,12 @@ ADKAR står för:
 
 Awareness betyder att personen förstår varför förändringen behövs.
 
-I vårt spel skapas awareness genom att varje rum visar en risk:
+I vårt spel skapas awareness genom ransomware-scenariot:
 
-- phishing kan stjäla inloggningar
-- svaga lösenord kan knäckas
-- MFA-notiser kan missbrukas
-- okända USB-enheter kan innehålla skadlig kod
-- incidenter behöver rapporteras snabbt
+- terminalen säger att filerna är krypterade
+- spelaren ser att en attack kan låsa viktiga filer
+- frågorna visar hur ransomware sprids och hur man bör reagera
+- tidspressen gör att incidenten känns akut utan att bli olämplig för skolan
 
 Spelaren får se att säkerhet inte bara är regler, utan vardagliga beslut.
 
@@ -28,7 +27,8 @@ Spelaren får se att säkerhet inte bara är regler, utan vardagliga beslut.
 
 Desire betyder att personen vill vara med i förändringen.
 
-Vi försöker skapa motivation genom att göra lärandet mer aktivt. Istället för att bara läsa en text får spelaren lösa rum, samla poäng och låsa upp nästa steg.
+Vi försöker skapa motivation genom att göra lärandet mer aktivt. Istället för att bara läsa en text får spelaren lösa frågor under tidspress och låsa upp systemet steg för steg.
+I ransomware-versionen handlar motivationen om att återställa systemet så snabbt som möjligt. Varje fel svar ger 10 sekunders tidstillägg, så spelaren vill tänka noggrant och lära sig av feedbacken.
 
 I en klass eller organisation kan man öka viljan genom att:
 
@@ -43,17 +43,15 @@ Knowledge är extra viktigt i vårt projekt. Det handlar om att spelaren får ve
 
 Spelet ger kunskap genom:
 
-- realistiska scenarier
+- ett tydligt ransomware-scenario
 - tre tydliga svarsalternativ
 - direkt feedback efter val
-- ledtrådar i varje rum
+- samma fråga kommer igen efter fel svar
 - säkerhetsförklaringar efter rätt och fel svar
 
 Exempel:
 
-I Phishing Room lär sig spelaren att stress, hot och konstiga länkar är varningssignaler. Rätt beteende är att kontrollera avsändaren och gå själv till den riktiga webbplatsen.
-
-I MFA Door lär sig spelaren att man aldrig ska godkänna en MFA-notis som man inte själv har startat.
+Spelaren lär sig att ransomware är skadlig kod som krypterar filer och kräver lösensumma. Spelet visar också att rätt första steg är att koppla bort datorn från nätverket och kontakta IT, inte att betala direkt.
 
 ## Ability
 
@@ -65,14 +63,14 @@ Vi tycker att spelet tränar ability på tre sätt:
 
 - spelaren får öva i en trygg miljö
 - fel svar ger feedback utan verkliga konsekvenser
-- samma typ av beslut liknar riktiga situationer i skolan eller på jobbet
+- samma typ av beslut liknar riktiga situationer i skolan eller på jobbet, till exempel okända bilagor och misstänkt ransomware
 
 För att stärka ability efter spelet kan läraren låta eleverna:
 
 - förklara varför ett svar var rätt
-- skriva egna phishing-exempel
-- diskutera vad man gör vid incident
-- koppla rummen till skolans egna IT-regler
+- skriva egna exempel på misstänkta ransomware-mejl
+- diskutera vad man gör vid en misstänkt ransomware-incident
+- koppla frågorna till skolans egna IT-regler
 
 ## Reinforcement
 
@@ -80,10 +78,11 @@ Reinforcement betyder att förändringen hålls kvar.
 
 I spelet sker detta genom:
 
-- poäng
-- sparad progress
-- upprepade säkerhetsbudskap
-- positiv feedback när rummet låses upp
+- sluttid
+- antal fel
+- tidstillägg
+- scoreboard med flera sparade resultat
+- positiv feedback när systemet återställs
 
 Efter spelet kan förstärkning ske genom repetition, korta diskussioner och att samma råd återkommer i undervisningen.
 
@@ -104,7 +103,7 @@ Så kan man hantera det:
 - förklara att spelet är ett övningsverktyg, inte ett prov
 - låt personen spela tillsammans med någon annan
 - erbjud alternativet att läsa scenarierna och diskutera svaren muntligt
-- fokusera på lärandet, inte poängen
+- fokusera på lärandet, inte sluttiden
 - visa hur kunskapen hjälper i verkliga situationer
 
 Kopplat till ADKAR betyder det att motstånd ofta beror på låg Awareness, Desire eller Ability. Då ska man inte bara tvinga fram deltagande, utan hjälpa personen förstå varför det är relevant och göra det lättare att delta.

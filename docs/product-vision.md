@@ -2,26 +2,27 @@
 
 ## Produktnamn
 
-Security Escape Room
+Ransomware Escape Room
 
 ## Vision
 
-Vi vill skapa ett terminalbaserat escape room-spel i PowerShell där spelaren lär sig grundläggande IT-säkerhet genom att lösa fem rum. Spelet ska vara enkelt att köra, lätt att förstå och tydligt kopplat till verkliga säkerhetssituationer.
+Vi vill skapa ett terminalbaserat escape room-spel i PowerShell där spelaren lär sig om ransomware genom att klara ett tidspressat prov. Spelet ska vara enkelt att köra, lätt att förstå och tydligt kopplat till verkliga säkerhetssituationer.
 
 Vår vision är:
 
-> Ett kort och pedagogiskt PowerShell-spel där elever lär sig säkerhetsbeslut genom att spela, inte bara genom att läsa teori.
+> Ett kort och pedagogiskt PowerShell-spel där elever lär sig hur man känner igen, förebygger och reagerar på ransomware.
 
 ## Problem vi vill lösa
 
-IT-säkerhet kan kännas abstrakt om man bara läser om det. Vi ville göra det mer praktiskt genom att låta spelaren hamna i situationer där man måste välja rätt åtgärd.
+Ransomware kan kännas abstrakt om man bara läser om det. Vi gör ämnet mer praktiskt genom att låta spelaren hamna i ett fiktivt scenario där filerna är krypterade och systemet bara kan återställas genom rätt säkerhetskunskap.
 
 Exempel:
 
-- Ska man klicka på en länk i ett stressande mejl?
-- Vad gör man med en MFA-notis man inte själv startat?
-- Är det okej att stoppa in ett okänt USB-minne?
-- När ska man rapportera en misstänkt incident?
+- Vad är ransomware?
+- Vad gör man först vid misstänkt ransomware?
+- Varför är säkerhetskopior viktiga?
+- Hur sprids ransomware ofta?
+- Varför ska man vara försiktig med okända bilagor?
 
 ## Målgrupp
 
@@ -30,10 +31,11 @@ Målgruppen är elever som lär sig PowerShell och grundläggande IT-säkerhet. 
 ## Mål
 
 - Spelet ska kunna startas från `Start-Game.ps1`.
-- Spelet ska ha en tydlig huvudmeny.
-- Spelet ska ha fem escape room-rum.
-- Spelet ska ge tydlig feedback efter spelarens val.
-- Spelet ska spara progress i JSON.
+- Spelet ska visa ett tydligt ransomware-tema.
+- Spelet ska innehålla 5 frågor med 3 svarsalternativ.
+- Spelaren ska behöva svara rätt för att gå vidare.
+- Fel svar ska ge feedback och +10 sekunders tidstillägg.
+- Spelet ska mäta faktisk tid och total sluttid.
 - Koden ska vara uppdelad i moduler.
 - Koden ska vara enkel nog att vi kan förklara den muntligt.
 
@@ -48,5 +50,5 @@ En del av projektet räknas som klar när:
 - funktionen fungerar i PowerShell
 - koden är enkel och kommenterad vid behov
 - fel hanteras med tydligt meddelande där det behövs
-- funktionen passar in i spelets escape room-känsla
+- funktionen passar in i ransomware-temat
 - dokumentationen är uppdaterad

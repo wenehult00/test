@@ -1,4 +1,4 @@
-# Security Escape Room
+# Ransomware Escape Room
 # Detta är projektets startfil.
 # Kör spelet från projektmappen med kommandot: .\Start-Game.ps1
 
@@ -8,12 +8,12 @@ try {
     $modulesPath = Join-Path -Path $PSScriptRoot -ChildPath "modules"
 
     # Importera spelets moduler.
-    Import-Module (Join-Path -Path $modulesPath -ChildPath "UI.psm1") -Force -ErrorAction Stop
-    Import-Module (Join-Path -Path $modulesPath -ChildPath "SaveSystem.psm1") -Force -ErrorAction Stop
-    Import-Module (Join-Path -Path $modulesPath -ChildPath "SecurityChallenges.psm1") -Force -ErrorAction Stop
-    Import-Module (Join-Path -Path $modulesPath -ChildPath "GameEngine.psm1") -Force -ErrorAction Stop
+    Import-Module (Join-Path -Path $modulesPath -ChildPath "UI.psm1") -Force -DisableNameChecking -ErrorAction Stop
+    Import-Module (Join-Path -Path $modulesPath -ChildPath "SaveSystem.psm1") -Force -DisableNameChecking -ErrorAction Stop
+    Import-Module (Join-Path -Path $modulesPath -ChildPath "SecurityChallenges.psm1") -Force -DisableNameChecking -ErrorAction Stop
+    Import-Module (Join-Path -Path $modulesPath -ChildPath "GameEngine.psm1") -Force -DisableNameChecking -ErrorAction Stop
 
-    # Starta spelets huvudfunktion.
+    # Starta spelets huvudfunktion. Namnet behålls för att äldre instruktioner fortfarande ska fungera.
     Start-SecurityEscapeRoom -ProjectRoot $PSScriptRoot
 }
 catch {

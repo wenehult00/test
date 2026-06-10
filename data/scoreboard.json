@@ -1,0 +1,42 @@
+[
+  {
+    "playerName": "lucas",
+    "completedAt": "2026-06-10T15:55:07",
+    "actualTimeSeconds": 23,
+    "wrongAnswers": 1,
+    "penaltySeconds": 10,
+    "totalTimeSeconds": 33
+  },
+  {
+    "playerName": "hej",
+    "completedAt": "2026-06-10T15:55:45",
+    "actualTimeSeconds": 6,
+    "wrongAnswers": 0,
+    "penaltySeconds": 0,
+    "totalTimeSeconds": 6
+  },
+  {
+    "playerName": "FlowTest",
+    "completedAt": "2026-06-10T16:00:36",
+    "actualTimeSeconds": 0,
+    "wrongAnswers": 0,
+    "penaltySeconds": 0,
+    "totalTimeSeconds": 0
+  },
+  {
+    "playerName": "PauseTest",
+    "completedAt": "2026-06-10T16:01:01",
+    "actualTimeSeconds": 12,
+    "wrongAnswers": 1,
+    "penaltySeconds": 10,
+    "totalTimeSeconds": 22
+  },
+  {
+    "playerName": "sten",
+    "completedAt": "2026-06-10T16:01:54",
+    "actualTimeSeconds": 13,
+    "wrongAnswers": 1,
+    "penaltySeconds": 10,
+    "totalTimeSeconds": 23
+  }
+]

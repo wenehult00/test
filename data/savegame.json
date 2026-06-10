@@ -1,10 +1,11 @@
 {
-  "playerName": "lucas",
-  "currentRoom": 2,
-  "score": 20,
-  "completedRooms": [
-    "phishing-room",
-    "password-vault"
-  ],
-  "lastSaved": "2026-06-08T12:13:08"
+  "playerName": "sten",
+  "startTime": "2026-06-10T16:01:42.3419053+02:00",
+  "endTime": "2026-06-10T16:01:54.9141202+02:00",
+  "actualSeconds": 13,
+  "wrongAnswers": 1,
+  "penaltySeconds": 10,
+  "totalSeconds": 23,
+  "completedQuestions": 5,
+  "lastSaved": "2026-06-10T16:01:54"
 }
